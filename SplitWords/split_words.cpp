@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 #include <iterator>
@@ -26,7 +25,6 @@ int main( int argc, char* argv[])
     }
     it = it_end;
   }
-  std::cout << sentence << std::endl;
 
   int count = 1;
   for( auto word : words ) {
