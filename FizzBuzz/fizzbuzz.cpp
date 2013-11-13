@@ -10,12 +10,19 @@ int main( int argc, char* argv[])
   auto fizz = make_filter(3, "fizz");
   auto buzz = make_filter(5, "buzz");
 
-  auto fizzbuzz = [&fizz,&buzz](int n){
+  std::streambuf *buf;
+
+  //  Get stream buffer from output stream - could use to output to file also
+  buf = std::cout.rdbuf();
+  
+  std::ostream out( buf );
+
+  auto fizzbuzz = [&fizz,&buzz, &out](int n){
     std::string s = fizz(n) + buzz(n);
     if ( s.size() > 0 ) {
-      std::cout << s;
+      out << s;
     } else {
-      std::cout << n;
+      out << n;
     }
   };
 
