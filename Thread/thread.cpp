@@ -9,9 +9,9 @@ void called_from_thread() {
 int main(int argc, char* argv[])
 {
   std::thread t( &called_from_thread );
-  t.detach();
 
   std::cout << "Message from main" << std::endl;
 
+  t.join();
   return 0;
 }
