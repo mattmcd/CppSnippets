@@ -20,5 +20,8 @@ int main(int argc, char* argv[])
   x = 10; // Change x in the environment
   std::cout <<	add_x(3) << std::endl; // 13
   
+  // Immediate application of lambda
+  std::cout <<  [&x](int y){ return x + y;}(15) << std::endl;
+
   return 0;
 }
