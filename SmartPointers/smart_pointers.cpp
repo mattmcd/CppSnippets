@@ -54,8 +54,12 @@ int main(int argc, char* argv[])
   std::cout << option1(spot) << std::endl;
 
   // Can't reuse unique_ptr - seg faults at run time if we try
+  // since payOffUnique now just contains NULL
   // OptionUnique option2( std::move(payOffUnique), expiry );
-  // std::cout << option2(spot) << std::endl;
+  auto option2 = std::move(option1); // Can move option
+  std::cout << option2(spot) << std::endl;
+  // Now option1 is invalid and seg faults if used.
+  // std::cout << option1(spot) << std::endl;
   
   // Can reuse shared_ptr
   OptionShared option3( payOffShared, expiry );
@@ -63,6 +67,9 @@ int main(int argc, char* argv[])
   
   OptionShared option4( payOffShared, expiry );
   std::cout << option4(spot) << std::endl;
+
+  auto option5 = option4;
+  std::cout << option5(spot) << std::endl;
 
   return 0;
 }
