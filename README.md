@@ -1,4 +1,4 @@
 CppSnippets
 ===========
 
-C++ code snippets
+A collection of C++ code snippets for no particular purpose.
